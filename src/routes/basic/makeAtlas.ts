@@ -1,6 +1,8 @@
 import * as THREE from "three";
 import { DEG2RAD } from "three/src/math/MathUtils";
 
+const GRID_SIZE = 100;
+
 export const makeAtlas = (scene: THREE.Scene, texture: THREE.Texture) => {
   const material = new THREE.MeshBasicMaterial({
     map: texture,
@@ -8,8 +10,6 @@ export const makeAtlas = (scene: THREE.Scene, texture: THREE.Texture) => {
     side: THREE.DoubleSide,
   });
 
-  // 30x30 Plane Grid
-  const GRID_SIZE = 100;
   for (let x = 0; x < GRID_SIZE; x++) {
     for (let z = 0; z < GRID_SIZE; z++) {
       const geometry = new THREE.PlaneGeometry(1, 1, 1, 1);

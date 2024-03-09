@@ -1,15 +1,14 @@
 import * as THREE from "three";
 import { DEG2RAD } from "three/src/math/MathUtils";
 
+const GRID_SIZE = 100;
+
 export const makeAtlas = (scene: THREE.Scene, texture: THREE.Texture) => {
   const material = new THREE.MeshBasicMaterial({
     map: texture,
     wireframe: false,
     side: THREE.DoubleSide,
   });
-
-  // 30x30 Plane Grid
-  const GRID_SIZE = 100;
 
   const batchedMesh = new THREE.BatchedMesh(
     GRID_SIZE ** 2,
