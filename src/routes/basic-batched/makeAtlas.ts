@@ -10,6 +10,22 @@ export const makeAtlas = (scene: THREE.Scene, texture: THREE.Texture) => {
 
   // 30x30 Plane Grid
   const GRID_SIZE = 100;
+
+  const batchedMesh = new THREE.BatchedMesh(
+    GRID_SIZE ** 2,
+    GRID_SIZE ** 2 * 6,
+    GRID_SIZE ** 2 * 6,
+    material
+  );
+
+  const tempMatrix = new THREE.Matrix4();
+  const tempV3 = new THREE.Vector3();
+  const tempQ = new THREE.Quaternion().setFromAxisAngle(
+    new THREE.Vector3(1, 0, 0),
+    DEG2RAD * 90
+  );
+  const scale = new THREE.Vector3(1, 1, 1);
+  // tempQ.setFromAxisAngle([1,0,0], DEG2RAD*90)
   for (let x = 0; x < GRID_SIZE; x++) {
     for (let z = 0; z < GRID_SIZE; z++) {
       const geometry = new THREE.PlaneGeometry(1, 1, 1, 1);
@@ -43,11 +59,16 @@ export const makeAtlas = (scene: THREE.Scene, texture: THREE.Texture) => {
 
       geometry.attributes.uv.needsUpdate = true;
 
-      const mesh = new THREE.Mesh(geometry, material);
-      mesh.position.set(x - GRID_SIZE / 2, Math.random(), z - GRID_SIZE / 2);
-      mesh.rotateX(-DEG2RAD * 90);
+      const batchedId = batchedMesh.addGeometry(geometry);
 
-      scene.add(mesh);
+      tempMatrix.compose(
+        tempV3.set(x - GRID_SIZE / 2, Math.random(), z - GRID_SIZE / 2),
+        tempQ,
+        scale
+      );
+      batchedMesh.setMatrixAt(batchedId, tempMatrix);
     }
   }
+
+  scene.add(batchedMesh);
 };

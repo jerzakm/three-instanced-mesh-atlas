@@ -3,7 +3,12 @@
   <ul>
     <li>
       <a data-sveltekit-reload href="/basic">
-        Basic - UV shifting on a PlaneGeometry
+        1. Basic - UV shifting on a PlaneGeometry
+      </a>
+    </li>
+    <li>
+      <a data-sveltekit-reload href="/basic-batched">
+        1.a. Basic - but with BatchedMesh
       </a>
     </li>
   </ul>
@@ -22,6 +27,8 @@
   }
   ul {
     list-style: none;
+    display: flex;
+    flex-direction: column;
   }
   a {
     color: black;
