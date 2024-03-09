@@ -17,7 +17,7 @@
   });
 </script>
 
-<T.PerspectiveCamera makeDefault position={[15, 30, 15]} fov={15}>
+<T.PerspectiveCamera makeDefault position={[15, 30, 15]} fov={15} far={100000}>
   <OrbitControls
     enableZoom={true}
     enableDamping
