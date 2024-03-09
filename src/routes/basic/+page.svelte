@@ -1,8 +1,9 @@
 <script lang="ts">
-  import App from "./troika/App.svelte";
+  import App from "./App.svelte";
 </script>
 
 <div>
+  <!-- Troika instanced -->
   <App />
 </div>
 
