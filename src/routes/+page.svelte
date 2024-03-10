@@ -1,5 +1,5 @@
 <script lang="ts">
-  import App from "./troika/App.svelte";
+  import App from "./instanced-troika/App.svelte";
 </script>
 
 <div>

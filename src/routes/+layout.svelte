@@ -3,17 +3,17 @@
   <ul>
     <li>
       <a data-sveltekit-reload href="/basic">
-        1 - Basic - Geometry UV shifting on a Mesh
+        1 - Geometry UV shifting on a Mesh
       </a>
     </li>
     <li>
       <a data-sveltekit-reload href="/basic-batched">
-        2 - Basic - Geometry UV shifting with BatchedMesh
+        2 - Geometry UV shifting with BatchedMesh
       </a>
     </li>
     <li>
       <a data-sveltekit-reload href="/instanced-troika">
-        3. Intermediate - Instancing with troika utils
+        3. Instancing with custom shader - troika utils
       </a>
     </li>
   </ul>

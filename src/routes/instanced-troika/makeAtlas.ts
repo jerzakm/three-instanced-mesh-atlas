@@ -6,7 +6,7 @@ import { DEG2RAD } from "three/src/math/MathUtils";
 
 const GRID_SIZE = 500;
 
-/** replace base UVs with the altered spritesheet UV.
+/** replace base UVs with the altered  UV.
  * Should allow for supporting of most THREE base materials
  * TODO needs improvements
  */
@@ -26,40 +26,35 @@ const replaceUVs = (text: string, replacement: string) => {
 
 export const makeAtlasMaterial = (
   baseMaterial: THREE.Material
-): THREE.Material => {
+): THREE.ShaderMaterial => {
   const customMaterial = createDerivedMaterial(baseMaterial, {
     defines: {
       USE_UV: "",
     },
     uniforms: {
-      atlasSize: { value: 8 },
+      atlasSize: { value: new THREE.Vector2(1, 1) },
       pickedTexture: { value: new THREE.Vector2() },
     },
-
-    customRewriter: ({ vertexShader, fragmentShader }: any) => {
-      // uniforms etc
-      const header = /*glsl*/ `
-			uniform float atlasSize;
+    fragmentDefs: /*glsl*/ `
+      uniform vec2 atlasSize;
       uniform vec2 pickedTexture;
-			`;
-
+    `,
+    customRewriter: ({ vertexShader, fragmentShader }: any) => {
       // calculate sprite UV
       const newUvs = /*glsl*/ `			
-        vec2 fSize = vec2(1./8.);
+        vec2 fSize = vec2(1.)/atlasSize;
         vec2 fOffset = pickedTexture*fSize;
         
         vec2 textureAtlasUv = fSize  * vUv + fOffset;      
 			`;
+
+      // inject new UVs calculation at the start of main
       fragmentShader = fragmentShader.replace(
         `void main() {`,
         `void main() {${newUvs}`
       );
 
-      fragmentShader = `
-			${header}			
-			${fragmentShader}
-			`;
-
+      // replace standard material UVs with the atlas UV
       fragmentShader = replaceUVs(fragmentShader, "textureAtlasUv");
 
       return { vertexShader, fragmentShader };
@@ -81,6 +76,8 @@ export const makeAtlas = (scene: THREE.Scene, texture: THREE.Texture) => {
     side: THREE.DoubleSide,
   });
   const instancedMaterial = makeAtlasMaterial(baseMaterial);
+  instancedMaterial.uniforms.atlasSize.value.x = 8;
+  instancedMaterial.uniforms.atlasSize.value.y = 8;
 
   const count = cols * rows;
   const mesh = new InstancedUniformsMesh(
