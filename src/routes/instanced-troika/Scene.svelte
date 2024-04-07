@@ -1,7 +1,6 @@
 <script lang="ts">
   import { T, useThrelte } from "@threlte/core";
   import { OrbitControls, useTexture } from "@threlte/extras";
-  import { onMount } from "svelte";
   import { makeAtlas } from "./makeAtlas";
   import { NearestFilter } from "three";
 

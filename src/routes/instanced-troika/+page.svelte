@@ -3,7 +3,6 @@
 </script>
 
 <div>
-  <!-- Troika instanced -->
   <App />
 </div>
 
