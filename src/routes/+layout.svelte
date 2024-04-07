@@ -12,8 +12,13 @@
       </a>
     </li>
     <li>
+      <a data-sveltekit-reload href="/instanced-data-texture">
+        3. Instancing with custom shader - THREE.DataTexture
+      </a>
+    </li>
+    <li>
       <a data-sveltekit-reload href="/instanced-troika">
-        3. Instancing with custom shader - troika utils
+        4. Instancing with custom shader and troika utils
       </a>
     </li>
   </ul>

@@ -4,7 +4,7 @@ import { DEG2RAD } from "three/src/math/MathUtils";
 import vertexShader from "./_vs.glsl?raw";
 import fragmentShader from "./_fs.glsl?raw";
 
-const GRID_SIZE = 512;
+const GRID_SIZE = 500;
 
 export const makeAtlas = (scene: THREE.Scene, texture: THREE.Texture) => {
   const cols = GRID_SIZE;
