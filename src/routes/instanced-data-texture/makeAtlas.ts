@@ -79,6 +79,7 @@ export const makeAtlas = (scene: THREE.Scene, texture: THREE.Texture) => {
 
       mesh.setMatrixAt(i, tempMatrix);
 
+      // Rolls a random atlas tile id
       tex.image.data[i] = Math.floor(Math.random() * atlasSize ** 2);
     }
   }
