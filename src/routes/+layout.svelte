@@ -17,8 +17,13 @@
       </a>
     </li>
     <li>
+      <a data-sveltekit-reload href="/instanced-buffer-attribute">
+        34 Instancing with custom shader - BufferAttribute
+      </a>
+    </li>
+    <li>
       <a data-sveltekit-reload href="/instanced-troika">
-        4. Instancing with custom shader and troika utils
+        5. Instancing with custom shader and troika utils
       </a>
     </li>
   </ul>
