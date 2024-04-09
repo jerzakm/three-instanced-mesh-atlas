@@ -3,27 +3,27 @@
   <ul>
     <li>
       <a data-sveltekit-reload href="/basic">
-        1 - Geometry UV shifting on a Mesh
+        1 - Mesh - Geometry UV shifting
       </a>
     </li>
     <li>
       <a data-sveltekit-reload href="/basic-batched">
-        2 - Geometry UV shifting with BatchedMesh
+        2 - BatchedMesh - Geometry UV shifting
       </a>
     </li>
     <li>
       <a data-sveltekit-reload href="/instanced-data-texture">
-        3. Instancing with custom shader - THREE.DataTexture
+        3. Instanced Mesh - Custom Shader + DataTexture
       </a>
     </li>
     <li>
       <a data-sveltekit-reload href="/instanced-buffer-attribute">
-        34 Instancing with custom shader - BufferAttribute
+        4. Instanced Mesh - Custom Shader + InstancedBufferAttribute
       </a>
     </li>
     <li>
       <a data-sveltekit-reload href="/instanced-troika">
-        5. Instancing with custom shader and troika utils
+        5. Instanced Mesh - Troika utils
       </a>
     </li>
   </ul>
